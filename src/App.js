@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import getCharacters from './services/getCharacters';
+import Characters from './components/Characters';
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -11,11 +12,10 @@ function App() {
   }, []);
 
   return (
-    <ul>
-      {characters.map((character) => (
-        <li key={character.name}>{character.name}</li>
-      ))}
-    </ul>
+    <>
+      <h1>Characters:</h1>
+      <Characters characters={characters} />
+    </>
   );
 }
 
