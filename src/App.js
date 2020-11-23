@@ -8,7 +8,7 @@ function App() {
   useEffect(() => {
     getCharacters()
       .then((characters) => setCharacters(characters))
-      .catch((error) => console.error(error));
+      .catch((error) => console.error(error.message));
   }, []);
 
   return (
