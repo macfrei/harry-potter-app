@@ -1,5 +1,22 @@
+import { useEffect, useState } from 'react';
+import getCharacters from './services/getCharacters';
+import Characters from './components/Characters';
+
 function App() {
-  return <div></div>;
+  const [characters, setCharacters] = useState([]);
+
+  useEffect(() => {
+    getCharacters()
+      .then((characters) => setCharacters(characters))
+      .catch((error) => console.error(error.message));
+  }, []);
+
+  return (
+    <>
+      <h1>Characters:</h1>
+      <Characters characters={characters} />
+    </>
+  );
 }
 
 export default App;
