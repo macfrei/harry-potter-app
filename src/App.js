@@ -26,6 +26,7 @@ const Container = styled.div`
   background: #17141d;
   color: ivory;
   margin: 0;
+  padding-bottom: 140px;
   text-align: center;
 
   h1 {
