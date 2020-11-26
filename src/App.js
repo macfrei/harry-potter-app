@@ -6,13 +6,10 @@ import styled from 'styled-components/macro'
 function App() {
   const [characters, setCharacters] = useState([])
 
-  useEffect(() => {
-    fetchCharactersFromApi()
+  const fetchCharactersFromApi = async () =>
+    setCharacters(await getCharacters())
 
-    // getCharacters()
-    // .then((characters) => setCharacters(characters))
-    // .catch((error) => console.error(error.message))
-  }, [])
+  useEffect(() => fetchCharactersFromApi(), [])
 
   return (
     <Container>
@@ -20,13 +17,6 @@ function App() {
       <Characters characters={characters} />
     </Container>
   )
-
-  async function fetchCharactersFromApi() {
-    const characters = await getCharacters()
-    const charactersArray = await characters.result
-    console.log(charactersArray, 'app')
-    setCharacters(charactersArray)
-  }
 }
 
 export default App
