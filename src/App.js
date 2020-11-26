@@ -7,9 +7,11 @@ function App() {
   const [characters, setCharacters] = useState([])
 
   useEffect(() => {
-    getCharacters()
-      .then((characters) => setCharacters(characters))
-      .catch((error) => console.error(error.message))
+    fetchCharactersFromApi()
+
+    // getCharacters()
+    // .then((characters) => setCharacters(characters))
+    // .catch((error) => console.error(error.message))
   }, [])
 
   return (
@@ -18,6 +20,13 @@ function App() {
       <Characters characters={characters} />
     </Container>
   )
+
+  async function fetchCharactersFromApi() {
+    const characters = await getCharacters()
+    const charactersArray = await characters.result
+    console.log(charactersArray, 'app')
+    setCharacters(charactersArray)
+  }
 }
 
 export default App
