@@ -1,9 +1,20 @@
+import styled from 'styled-components/macro'
+import CharacterCard from './CharacterCard'
+
 export default function Characters({ characters }) {
   return (
-    <ul>
+    <Container>
       {characters.map((character) => (
-        <li key={character.name}>{character.name}</li>
+        <CharacterCard key={character.name} character={character} />
       ))}
-    </ul>
-  );
+    </Container>
+  )
 }
+
+const Container = styled.ul`
+  display: grid;
+  font-family: sans-serif;
+  gap: 8px;
+  justify-content: center;
+  padding: 0;
+`

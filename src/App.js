@@ -1,22 +1,38 @@
-import { useEffect, useState } from 'react';
-import getCharacters from './services/getCharacters';
-import Characters from './components/Characters';
+import { useEffect, useState } from 'react'
+import getCharacters from './services/getCharacters'
+import Characters from './components/Characters'
+import styled from 'styled-components/macro'
+import loadFromLocal from './services/loadFromLocal'
 
 function App() {
-  const [characters, setCharacters] = useState([]);
+  const [characters, setCharacters] = useState(
+    loadFromLocal('characters') || []
+  )
 
-  useEffect(() => {
-    getCharacters()
-      .then((characters) => setCharacters(characters))
-      .catch((error) => console.error(error.message));
-  }, []);
+  const fetchCharactersFromApi = async () =>
+    setCharacters(await getCharacters())
+
+  useEffect(() => fetchCharactersFromApi(), [])
 
   return (
-    <>
+    <Container>
       <h1>Characters:</h1>
       <Characters characters={characters} />
-    </>
-  );
+    </Container>
+  )
 }
 
-export default App;
+export default App
+
+const Container = styled.div`
+  background: #17141d;
+  color: ivory;
+  margin: 0;
+  padding-bottom: 140px;
+  text-align: center;
+
+  h1 {
+    margin: 0;
+    padding: 5px;
+  }
+`
