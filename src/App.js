@@ -2,9 +2,12 @@ import { useEffect, useState } from 'react'
 import getCharacters from './services/getCharacters'
 import Characters from './components/Characters'
 import styled from 'styled-components/macro'
+import loadFromLocal from './services/loadFromLocal'
 
 function App() {
-  const [characters, setCharacters] = useState([])
+  const [characters, setCharacters] = useState(
+    loadFromLocal('characters') || []
+  )
 
   const fetchCharactersFromApi = async () =>
     setCharacters(await getCharacters())
