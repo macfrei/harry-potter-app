@@ -1,6 +1,9 @@
 import { createGlobalStyle } from 'styled-components/macro'
 
 const GlobalStyle = createGlobalStyle`
+* {
+  box-sizing: border-box;
+}
 
 :root {
  --gryffindor-primary: #740001;
@@ -13,7 +16,6 @@ const GlobalStyle = createGlobalStyle`
  --slytherin-primary-light: #2A623D;
  --slytherin-secondary: #5D5D5D;
  --slytherin-secondary-light:  #5D5D5D;
-
 
  --ravenclaw-primary: #0E1A40;
  --ravenclaw-primary-light: #222F5B;
@@ -28,6 +30,7 @@ const GlobalStyle = createGlobalStyle`
 }
 
 body {
+  font-size: 112.5%;
   margin: 0;
   padding: 0;
 }`
